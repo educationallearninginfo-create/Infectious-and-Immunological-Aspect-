@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<title>ID & Immunology Clinical Guide</title>
+<style>
+:root{--bg:#f4f8f8;--card:#fff;--ink:#13333a;--mute:#4d6a70;--line:#d3e0e2;--acc:#0b6e7a;--accbg:#e1f1f2;--red:#b3261e;--redbg:#fbe9e7;--amb:#8a5a00;--ambbg:#fff3d6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a1d;--card:#15262a;--ink:#e3eff0;--mute:#9db7bb;--line:#264046;--acc:#5cc3cf;--accbg:#173a40;--red:#ff8a80;--redbg:#3a1a18;--amb:#f3c969;--ambbg:#3a2e12}}
+:root[data-theme="dark"]{--bg:#0e1a1d;--card:#15262a;--ink:#e3eff0;--mute:#9db7bb;--line:#264046;--acc:#5cc3cf;--accbg:#173a40;--red:#ff8a80;--redbg:#3a1a18;--amb:#f3c969;--ambbg:#3a2e12}
+html{scroll-padding-top:70px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0}
+header.top{background:var(--ink);color:var(--bg);padding:2.2rem 1rem 1.6rem}
+:root[data-theme="dark"] header.top,:root:not([data-theme="light"]) header.top{--x:0}
+.wrap{max-width:980px;margin:0 auto;padding:0 1rem}
+header h1{font-size:clamp(1.7rem,5vw,2.6rem);max-width:20ch}
+header p{max-width:62ch;margin:.7rem 0 0;opacity:.88}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+nav .wrap{display:flex;gap:.2rem;padding-top:.3rem;padding-bottom:.3rem}
+nav a{color:var(--ink);text-decoration:none;padding:.5rem .8rem;border-radius:6px;font-size:.92rem}
+nav a:hover,nav a:focus-visible{background:var(--accbg);outline:2px solid var(--acc)}
+section{padding:2rem 0 .5rem}
+section>.wrap>h2{font-size:1.6rem;margin-bottom:.4rem}
+.lead{color:var(--mute);margin:0 0 1rem;max-width:68ch}
+.search{width:100%;padding:.75rem 1rem;border:2px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit;margin-bottom:.7rem}
+.search:focus{outline:none;border-color:var(--acc)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:.3rem .8rem;border-radius:99px;cursor:pointer;font:inherit;font-size:.88rem}
+.chip[aria-pressed="true"]{background:var(--acc);color:var(--bg);border-color:var(--acc)}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin-bottom:.55rem}
+summary{cursor:pointer;padding:.8rem 1rem;font-weight:600;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+summary small{font-weight:400;color:var(--mute)}
+details[open]>summary{border-bottom:1px solid var(--line)}
+.body{padding:.9rem 1rem 1rem;display:grid;gap:.7rem}
+.body h3{font-size:1rem;font-family:system-ui,sans-serif;color:var(--acc)}
+.body ul{margin:.2rem 0 0;padding-left:1.2rem}
+.flag{background:var(--redbg);color:var(--red);border-left:4px solid var(--red);padding:.6rem .8rem;border-radius:4px}
+.flag b{color:inherit}
+.note{background:var(--ambbg);color:var(--amb);border-left:4px solid var(--amb);padding:.6rem .8rem;border-radius:4px;font-size:.93rem}
+.grid{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1rem}
+.box h3{font-size:1.05rem;margin-bottom:.4rem}
+.box ul{margin:0;padding-left:1.2rem}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:.93rem;min-width:560px}
+th,td{border:1px solid var(--line);padding:.55rem .7rem;text-align:left;vertical-align:top}
+th{background:var(--accbg)}
+.check label{display:flex;gap:.6rem;padding:.45rem 0;border-bottom:1px solid var(--line);cursor:pointer}
+.check input{margin-top:.35rem;accent-color:var(--acc)}
+.prog{height:8px;background:var(--line);border-radius:4px;margin:.5rem 0 1rem;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--acc);transition:width .2s}
+.empty{padding:1rem;color:var(--mute)}
+footer{margin-top:2.5rem;padding:1.5rem 0 2rem;border-top:1px solid var(--line);color:var(--mute);font-size:.9rem}
+footer a{color:var(--acc)}
+.pill{font-size:.78rem;background:var(--accbg);color:var(--acc);border-radius:99px;padding:.1rem .6rem;white-space:nowrap}
+.fg{display:grid;gap:.7rem;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));margin-bottom:.6rem}
+.fg label{font-size:.85rem;color:var(--mute);display:grid;gap:.2rem}
+.fg input,.fg select{padding:.5rem;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font:inherit;width:100%}
+.cb{display:grid;gap:.1rem .8rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:.3rem 0 .8rem}
+.cb label{display:flex;gap:.5rem;padding:.25rem 0;cursor:pointer;font-size:.93rem}
+.cb input{accent-color:var(--acc)}
+.btn{background:var(--acc);color:var(--bg);border:0;border-radius:6px;padding:.65rem 1.2rem;font:inherit;font-weight:600;cursor:pointer;margin:.3rem .4rem .3rem 0}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+#res>*,#dres>*{margin-top:.8rem}
+.box h4{font-size:.95rem;color:var(--acc);margin:.6rem 0 .2rem}
+.good{background:var(--accbg);color:var(--acc);border-left:4px solid var(--acc);padding:.6rem .8rem;border-radius:4px}
+.qo{display:block;width:100%;text-align:left}
+.qo:disabled{cursor:default}
+.ur{font-family:'Noto Nastaliq Urdu','Segoe UI',Tahoma,serif;line-height:2.1}
+[dir=rtl] ul{padding-left:0;padding-right:1.2rem}
+@media print{body *{visibility:hidden}#sheet,#sheet *{visibility:visible}#sheet{position:absolute;left:0;top:0;width:100%;border:0}.noprint{display:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<h1>Infectious diseases and immunology at the point of care</h1>
+<p>A quick clinical reference for physicians, family doctors and allied health professionals: recognise the syndrome, know the red flags, investigate sensibly, treat responsibly, and follow up. Clinical sections are for healthcare professionals; the Patient awareness section is for the general public.</p>
+</div></header>
+<nav aria-label="Sections"><div class="wrap">
+<a href="#assess">Assess patient</a><a href="#dose">Dose calculator</a><a href="#preg">Pregnancy</a><a href="#diet">Diet</a><a href="#aware">Patient awareness</a><a href="#updates">Daily updates</a><a href="#quiz">Daily quiz</a><a href="#syndromes">Syndromes</a><a href="#immuno">Immunology</a><a href="#stewardship">Stewardship</a><a href="#vaccines">Vaccines</a><a href="#workup">Patient checklist</a><a href="#sources">Sources</a>
+</div></nav>
+
+<section id="assess"><div class="wrap">
+<h2>Patient assessment and treatment suggestions</h2>
+<p class="lead">Enter clinical details only. Do not type a name, ID number, phone or address. Nothing is saved or sent; the analysis runs in this page.</p>
+<div class="box"><div class="fg">
+<label>Age (years)<input id="ay" type="number" min="0" max="100"></label>
+<label>Months (0 to 11)<input id="am" type="number" min="0" max="11" value="0"></label>
+<label>Weight (kg)<input id="aw" type="number" min="1" max="250" step="0.1"></label>
+<label>Temperature (°C)<input id="at" type="number" step="0.1"></label>
+<label>Fever days<input id="ad" type="number" min="0"></label>
+<label>Heart rate /min<input id="ah" type="number"></label>
+<label>Resp. rate /min<input id="ar" type="number"></label>
+<label>Systolic BP<input id="ab" type="number"></label>
+<label>SpO2 %<input id="as" type="number" max="100"></label></div>
+<h4>Symptoms and signs</h4><div class="cb" id="sy"></div>
+<h4>Exposure and background</h4><div class="cb" id="bg"></div>
+<button class="btn" id="go">Get suggestions</button><button class="btn ghost" id="clr">Clear</button></div>
+<div id="res"></div></div></section>
+
+<section id="dose"><div class="wrap">
+<h2>Dose calculator, age 0 to 100 years</h2>
+<p class="lead">Weight-based for children; fixed adult doses from 40 kg or age 18. If weight is blank it is estimated from age.</p>
+<div class="box"><div class="fg">
+<label>Age (years)<input id="dy" type="number" min="0" max="100"></label>
+<label>Months (0 to 11)<input id="dm" type="number" min="0" max="11" value="0"></label>
+<label>Weight (kg, optional)<input id="dw" type="number" min="1" max="250" step="0.1"></label>
+<label>Medicine<select id="dd"></select></label>
+<label>Dose level<select id="dl"><option value="s">Standard</option><option value="h">High (severe or specific)</option></select></label>
+<label>Liquid mg per 5 mL (optional)<input id="dst" type="number" min="0"></label>
+<label>Kidney function, CrCl (mL/min)<input id="dk" type="number" min="0"></label>
+<label>Or serum creatinine (mg/dL)<input id="dsc" type="number" step="0.01" min="0"></label>
+<label>Sex (for creatinine)<select id="dsx"><option value="m">Male</option><option value="f">Female</option></select></label></div>
+<div class="cb"><label><input type="checkbox" id="dpg">Pregnant</label><label><input type="checkbox" id="dsp">Liver impairment or frail</label></div>
+<p class="lead" style="font-size:.9rem">Leave kidney fields empty if kidney function is normal or unknown. With creatinine only, adult CrCl is estimated by Cockcroft-Gault. Creatinine in µmol/L divided by 88.4 gives mg/dL.</p>
+<button class="btn" id="dgo">Calculate dose</button></div>
+<div id="dres"></div></div></section>
+
+<section id="preg"><div class="wrap">
+<h2>Infections in pregnancy</h2>
+<p class="lead">Generally accepted practice. Confirm with obstetric and infectious diseases advice and local protocols.</p>
+<div class="grid">
+<div class="box"><h3>Generally acceptable</h3><ul><li>Penicillins (amoxicillin) and cephalosporins (ceftriaxone, cefalexin)</li><li>Azithromycin; paracetamol for pain and fever</li><li>Fosfomycin or nitrofurantoin for UTI per local resistance (avoid nitrofurantoin near term)</li><li>Oseltamivir for influenza, started early</li><li>IV artesunate for severe malaria in all trimesters</li></ul></div>
+<div class="box"><h3>Avoid or use only with specialist advice</h3><ul><li>Tetracyclines (doxycycline) and fluoroquinolones</li><li>NSAIDs, especially from 20 weeks</li><li>Trimethoprim in the first trimester; aminoglycosides unless essential</li><li>Ribavirin and high-dose fluconazole</li><li>Live vaccines (MMR, varicella)</li></ul></div>
+<div class="box"><h3>Screen and act</h3><ul><li>Screen and treat asymptomatic bacteriuria</li><li>Syphilis, HIV and hepatitis B screening at booking, with treatment to protect the baby</li><li>Admit pyelonephritis, severe pneumonia, dengue, malaria and sepsis</li><li>Vaccinate: influenza, Tdap, COVID-19 per national guidance, hepatitis B if non-immune</li><li>Rubella or varicella exposure: seek urgent advice</li></ul></div></div></div></section>
+
+<section id="diet"><div class="wrap">
+<h2>Diet and nutrition for hospital patients</h2>
+<p class="lead">Dietary modification before and after surgery, and during medical admission for infections and other illnesses. Adult guidance; children need a paediatric dietitian.</p>
+<div class="box"><div class="fg">
+<label>Stage<select id="ph"><option value="med">Medical admission (no surgery)</option><option value="pre">Before surgery</option><option value="post">After surgery</option></select></label>
+<label>Main illness<select id="cd"></select></label>
+<label>Adult weight (kg, optional)<input id="dwt" type="number" min="20" max="250"></label></div>
+<h4>Other conditions</h4><div class="cb" id="cm"></div>
+<button class="btn" id="dgo2">Get diet advice</button><button class="btn ghost" id="dpr">Print patient diet sheet</button><label style="font-size:.85rem;color:var(--mute)">Sheet language <select id="psl"><option value="en">English</option><option value="ur">اردو (Urdu)</option></select></label></div>
+<div id="dtr"></div>
+<div class="box" id="sheet" hidden></div>
+<h3 style="margin:1.5rem 0 .5rem">Example meal plans (adult)</h3>
+<div class="fg" style="max-width:380px"><label>Plan<select id="mpl"></select></label></div><div id="mpr"></div>
+<h3 style="margin:1.5rem 0 .5rem">Paediatric diet guidance</h3>
+<div class="grid" id="ped"></div>
+</div></section>
+
+<section id="aware"><div class="wrap">
+<h2>Patient awareness for the general public</h2>
+<p class="lead">Simple health messages for patients, families and communities. Choose a language. For any other language, use your browser's translate feature.</p>
+<div class="chips" id="alg"></div>
+<div class="box" id="aw"></div>
+</div></section>
+
+<section id="updates"><div class="wrap">
+<h2>Daily updates</h2>
+<p class="lead" id="upd"></p>
+<div class="box"><h3>Clinical pearl of the day</h3><p id="pearl" style="margin:.2rem 0"></p></div>
+<h3 style="margin:1.2rem 0 .5rem">Outbreak and public health snapshot</h3>
+<div id="news"></div>
+<div class="note">This page cannot fetch live news. The snapshot is dated 11 October 2026; check the live sources for the latest figures.</div>
+<div class="box" style="margin-top:.8rem"><h3>Live sources</h3><ul><li><a href="https://www.who.int/emergencies/disease-outbreak-news" rel="noopener">WHO Disease Outbreak News</a></li><li><a href="https://www.cdc.gov/mmwr/" rel="noopener">CDC MMWR</a></li><li><a href="https://www.ecdc.europa.eu/en/ebola-outbreak-democratic-republic-congo-and-uganda" rel="noopener">ECDC Ebola updates</a></li><li><a href="https://travelhealthpro.org.uk/outbreaks" rel="noopener">NaTHNaC outbreak surveillance</a></li></ul></div>
+</div></section>
+
+<section id="quiz"><div class="wrap">
+<h2>Daily quiz</h2><p class="lead" id="qd"></p><div class="box" id="qz"></div></div></section>
+
+<section id="syndromes"><div class="wrap">
+<h2>Common infectious syndromes</h2>
+<p class="lead">Search or filter. Tap a condition to open its summary. Items marked South Asia are frequent in Pakistan and the region.</p>
+<input class="search" id="q" type="search" placeholder="Search e.g. fever, dengue, cough, rash" aria-label="Search syndromes">
+<div class="chips" id="chips"></div>
+<div id="list"></div>
+<div class="note">Antimicrobial choice and doses depend on local resistance patterns, renal function, pregnancy, allergies and age. Check your national or hospital guideline before prescribing.</div>
+</div></section>
+
+<section id="immuno"><div class="wrap">
+<h2>Immunology essentials</h2>
+<p class="lead">What matters in clinic: when to suspect an immune problem, and how immune status changes infection risk and management.</p>
+<div class="grid">
+<div class="box"><h3>Innate immunity</h3><ul><li>First line, fast, non-specific: skin and mucosal barriers, neutrophils, macrophages, NK cells, complement, interferons.</li><li>Deficits: neutropenia (bacterial and fungal infection), complement deficiency (Neisseria infections).</li></ul></div>
+<div class="box"><h3>Adaptive immunity</h3><ul><li>T cells: coordinate response, kill infected cells. Deficits: opportunistic viral, fungal and mycobacterial infection (HIV, transplant, steroids).</li><li>B cells and antibodies: encapsulated bacteria and sinopulmonary infection when deficient.</li></ul></div>
+<div class="box"><h3>Who is immunocompromised?</h3><ul><li>HIV with low CD4, transplant recipients, chemotherapy</li><li>Biologics (anti-TNF, rituximab), long-term steroids</li><li>Asplenia, diabetes, CKD, cirrhosis, malnutrition</li></ul></div>
+</div>
+<h3 style="margin:1.2rem 0 .5rem">Hypersensitivity types</h3>
+<div class="tw"><table>
+<tr><th>Type</th><th>Mechanism</th><th>Examples</th></tr>
+<tr><td>I, immediate</td><td>IgE on mast cells</td><td>Anaphylaxis, allergic rhinitis, urticaria, penicillin allergy (true IgE-mediated)</td></tr>
+<tr><td>II, cytotoxic</td><td>IgG or IgM against cell antigens</td><td>Hemolytic anemia, transfusion reactions, Goodpasture</td></tr>
+<tr><td>III, immune complex</td><td>Antigen-antibody deposits</td><td>Serum sickness, post-streptococcal glomerulonephritis, lupus nephritis</td></tr>
+<tr><td>IV, delayed</td><td>T-cell mediated</td><td>Contact dermatitis, tuberculin reaction, DRESS, SJS/TEN</td></tr>
+</table></div>
+<div class="flag" style="margin-top:1rem"><b>Suspect primary immunodeficiency when:</b> infections are recurrent, severe, unusual or hard to clear; there is failure to thrive; a family history of early deaths from infection; persistent thrush or candidiasis beyond infancy; or a serious reaction to a live vaccine. Start with CBC with differential, quantitative immunoglobulins and HIV test, then refer.</div>
+<div class="note" style="margin-top:.7rem">Anaphylaxis: give intramuscular adrenaline first, call for help, position supine with legs raised, then give fluids and adjuncts.</div>
+</div></section>
+
+<section id="stewardship"><div class="wrap">
+<h2>Antimicrobial stewardship</h2>
+<p class="lead">Resistance is a patient-safety issue in every clinic. Five habits reduce harm.</p>
+<div class="grid">
+<div class="box"><h3>1. Diagnose first</h3><p>Is this bacterial? Most acute cough, sore throat without Centor features, and uncomplicated diarrhoea do not need antibiotics. Take cultures before antibiotics when sepsis is possible.</p></div>
+<div class="box"><h3>2. Choose the narrowest effective drug</h3><p>The WHO AWaRe grouping helps: prefer Access antibiotics first-line, use Watch agents only for defined indications, and keep Reserve agents for resistant infections.</p></div>
+<div class="box"><h3>3. Dose and duration</h3><p>Dose for site, weight and kidney function. Use the shortest evidence-based course; many infections need 5 to 7 days or fewer.</p></div>
+<div class="box"><h3>4. Review at 48 to 72 hours</h3><p>Check cultures and response. Narrow, switch from IV to oral, or stop. Document indication and stop date.</p></div>
+<div class="box"><h3>5. Counsel the patient</h3><p>Explain why antibiotics are not needed for viral illness, give safety-net advice, and discourage self-medication and leftover antibiotics.</p></div>
+</div>
+</div></section>
+
+<section id="vaccines"><div class="wrap">
+<h2>Vaccination and prevention</h2>
+<p class="lead">Check vaccination status at every contact. Follow your national immunisation schedule (for Pakistan, the EPI schedule).</p>
+<div class="grid">
+<div class="box"><h3>Adults at higher risk</h3><ul><li>Annual influenza vaccine</li><li>Pneumococcal vaccine for age, diabetes, chronic lung, heart, kidney or liver disease, asplenia, immunosuppression</li><li>Hepatitis B for health workers, diabetes, CKD, close contacts</li><li>Tetanus booster every 10 years and for wounds</li><li>COVID-19 per current national guidance</li></ul></div>
+<div class="box"><h3>Live vaccine caution</h3><p>Avoid live vaccines (MMR, varicella, BCG, oral polio, yellow fever) in pregnancy and in severe immunosuppression. Give inactivated vaccines before starting immunosuppression when possible.</p></div>
+<div class="box"><h3>Health worker protection</h3><ul><li>Hand hygiene, correct PPE, safe sharps handling</li><li>Hepatitis B immunity confirmed</li><li>Needle-stick: wash, report immediately, assess for HIV PEP and hepatitis B and C follow-up</li></ul></div>
+</div>
+</div></section>
+
+<section id="workup"><div class="wrap">
+<h2>Managing the febrile or infected patient</h2>
+<p class="lead">A repeatable checklist. Ticks are kept only on this page and reset when you reload.</p>
+<div class="prog"><i id="bar"></i></div>
+<div class="box check" id="ck"></div>
+<div class="flag" style="margin-top:1rem"><b>Escalate immediately if:</b> systolic BP under 90, altered consciousness, respiratory rate 22 or higher, oxygen saturation under 92%, non-blanching rash, signs of shock, severe dehydration, or an immunocompromised patient with fever.</div>
+</div></section>
+
+<section id="sources"><div class="wrap">
+<h2>Sources to verify and go deeper</h2>
+<p class="lead">This site is a summary for quick orientation, not a substitute for current guidelines. Use these authoritative references for detail and for the latest updates.</p>
+<div class="grid">
+<div class="box"><h3>MSD Manual Professional, Infectious Diseases</h3><p><a href="https://www.msdmanuals.com/professional/infectious-diseases" rel="noopener">msdmanuals.com</a></p></div>
+<div class="box"><h3>WHO publication 9789240062382</h3><p><a href="https://www.who.int/publications/i/item/9789240062382" rel="noopener">who.int</a></p></div>
+<div class="box"><h3>Other references</h3><ul><li><a href="https://www.who.int/publications" rel="noopener">WHO publications and guidelines</a></li><li><a href="https://www.cdc.gov/" rel="noopener">CDC</a></li><li><a href="https://www.idsociety.org/practice-guideline/practice-guidelines/" rel="noopener">IDSA guidelines</a></li></ul></div>
+</div>
+<footer>For education and clinical orientation only. It does not replace clinical judgment, local protocols or specialist advice. Content should be reviewed by a qualified clinician before use in patient care.</footer>
+</div></section>
+
+<script>
+var D=[
+{n:"Community-acquired pneumonia",t:["Respiratory"],f:"Fever, cough, sputum, pleuritic pain, breathlessness, focal crackles.",w:"Chest X-ray, oxygen saturation, CBC, CRP. Severity score such as CURB-65. Sputum and blood cultures if admitted.",m:"Mild outpatient cases are usually treated with an Access-group oral antibiotic such as amoxicillin, with doxycycline or a macrolide as alternatives. Admit by severity score and add atypical cover in severe disease. Treat for the shortest effective course.",r:"Confusion, RR 30 or higher, low BP, SpO2 under 92%, rising urea."},
+{n:"Urinary tract infection and pyelonephritis",t:["Genitourinary"],f:"Dysuria, frequency, urgency. Fever, flank pain and vomiting suggest upper tract disease.",w:"Urinalysis and urine culture. Do not treat asymptomatic bacteriuria except in pregnancy or before urological procedures.",m:"Choose by local resistance; ESBL-producing organisms are common in South Asia. Pyelonephritis needs a longer course; admit if septic, pregnant or unable to take oral drugs.",r:"Sepsis, obstruction, male or pregnant patient, urological abnormality."},
+{n:"Sepsis and septic shock",t:["Emergency"],f:"Suspected infection with organ dysfunction: hypotension, tachycardia, altered mentation, tachypnoea, reduced urine, raised lactate.",w:"Blood cultures before antibiotics (without delaying them), lactate, CBC, creatinine, bilirubin, source imaging.",m:"Early broad-spectrum antibiotics, ideally within one hour of recognition in shock; fluid resuscitation; vasopressors if hypotension persists; urgent source control. Reassess and de-escalate at 48 to 72 hours.",r:"Every sepsis case is time-critical. Refer or escalate to higher level of care early."},
+{n:"Bacterial meningitis",t:["Emergency","Neurological"],f:"Fever, headache, neck stiffness, photophobia, vomiting, altered consciousness, petechial or purpuric rash.",w:"Blood cultures and lumbar puncture. If a CT is needed first (focal deficit, seizure, reduced consciousness), do not delay antibiotics.",m:"Immediate empirical IV antibiotics plus dexamethasone per guideline, with added cover for Listeria in older adults and the immunocompromised. Notify public health and give prophylaxis to close contacts for meningococcal disease.",r:"Rapidly progressive rash, shock, seizures, reduced consciousness."},
+{n:"Typhoid (enteric fever)",t:["South Asia","Fever","Gastrointestinal"],f:"Prolonged step-wise fever, headache, abdominal pain, constipation or diarrhoea, relative bradycardia, hepatosplenomegaly.",w:"Blood culture (best before antibiotics) with susceptibility testing. Widal is unreliable.",m:"Extensively drug-resistant Salmonella Typhi has been reported in Pakistan, so treatment must follow local susceptibility data and national guidance. Severe disease needs admission. Complications: intestinal perforation and bleeding in week 2 to 3.",r:"Severe abdominal pain, GI bleeding, confusion, persistent fever on treatment."},
+{n:"Dengue",t:["South Asia","Fever","Tropical"],f:"Fever with severe headache, retro-orbital pain, myalgia, rash; leucopenia and thrombocytopenia.",w:"NS1 antigen in the first days, then IgM serology. Track hematocrit and platelets, especially around defervescence.",m:"Supportive care with oral fluids and paracetamol. Avoid NSAIDs and aspirin. Follow national triage into groups A (home), B (admit) and C (severe).",r:"Warning signs: abdominal pain, persistent vomiting, bleeding, lethargy, rising hematocrit with falling platelets, fluid accumulation."},
+{n:"Malaria",t:["South Asia","Fever","Tropical"],f:"Fever with chills and sweats, headache, anaemia, splenomegaly; any fever after travel to or residence in an endemic area.",w:"Rapid diagnostic test and thick and thin blood smear. Repeat if negative and suspicion remains.",m:"Species-directed therapy per national guideline. Severe malaria needs IV artesunate. P. vivax requires radical cure after G6PD testing.",r:"Impaired consciousness, jaundice, hypoglycaemia, severe anaemia, respiratory distress, renal failure."},
+{n:"Tuberculosis",t:["South Asia","Respiratory"],f:"Cough over 2 weeks, weight loss, night sweats, haemoptysis; extrapulmonary forms include nodes, pleura, spine and meninges.",w:"Sputum Xpert MTB/RIF or equivalent molecular test (also detects rifampicin resistance), sputum smear and culture, chest X-ray, HIV test.",m:"Treat through the national TB programme with directly observed regimens. Screen contacts and check for diabetes and HIV. Notify the case.",r:"Rifampicin resistance, TB meningitis, massive haemoptysis."},
+{n:"Skin and soft-tissue infection",t:["Skin"],f:"Cellulitis: spreading erythema, warmth, tenderness. Abscess: fluctuant collection.",w:"Mark the border, check for an abscess or necrotising infection. Culture pus.",m:"Abscess needs incision and drainage. Cellulitis is treated with an agent active against streptococci and staphylococci; add MRSA cover only with risk factors.",r:"Pain out of proportion, skin necrosis, crepitus, systemic toxicity suggests necrotising fasciitis: surgical emergency."},
+{n:"Acute gastroenteritis and diarrhoea",t:["Gastrointestinal"],f:"Watery or bloody stool, vomiting, cramps, dehydration.",w:"Assess hydration. Stool tests only for bloody, prolonged, severe or outbreak settings.",m:"Oral rehydration solution is the mainstay. Antibiotics are rarely needed; reserve for severe dysentery, cholera or specific pathogens. Zinc for children.",r:"Severe dehydration, blood with fever, immunocompromise, infants, symptoms over 14 days."},
+{n:"Viral hepatitis B and C",t:["South Asia","Liver"],f:"Often asymptomatic. Acute illness: jaundice, malaise, dark urine. Chronic: cirrhosis and hepatocellular carcinoma.",w:"HBsAg, anti-HBc, anti-HBs; anti-HCV with HCV RNA confirmation. Check liver tests and fibrosis stage.",m:"Hepatitis C is curable with direct-acting antivirals. Hepatitis B is managed with antiviral therapy for selected patients. Vaccinate non-immune contacts for hepatitis B.",r:"Acute liver failure, decompensated cirrhosis, coinfection with HIV."},
+{n:"HIV infection",t:["Immunology","Sexual health"],f:"Often asymptomatic. Acute infection can mimic mononucleosis. Opportunistic infections at low CD4.",w:"4th-generation antigen/antibody test, then confirmatory testing. Baseline CD4, viral load, resistance testing, hepatitis B and C, TB screening.",m:"Start antiretroviral therapy promptly with specialist guidance. Offer PrEP to high-risk persons and PEP within 72 hours of exposure. Test and treat partners.",r:"CD4 under 200: prophylaxis and opportunistic infection screening."},
+{n:"Influenza and COVID-19",t:["Respiratory","Viral"],f:"Fever, myalgia, cough, sore throat, fatigue; loss of smell with COVID-19.",w:"Rapid or PCR testing when it changes management or in outbreaks.",m:"Mostly supportive. Antivirals are considered for high-risk or hospitalised patients, ideally early. Vaccinate and isolate per local rules.",r:"Hypoxia, dyspnoea, pregnancy, immunosuppression, underlying cardiopulmonary disease."}
+];
+var tags=["All"],cur="All",list=document.getElementById("list"),q=document.getElementById("q"),chips=document.getElementById("chips");
+D.forEach(function(d){d.t.forEach(function(t){if(tags.indexOf(t)<0)tags.push(t)})});
+function esc(s){return String(s).replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
+function drawChips(){chips.innerHTML="";tags.forEach(function(t){var b=document.createElement("button");b.className="chip";b.textContent=t;b.setAttribute("aria-pressed",t===cur);b.onclick=function(){cur=t;drawChips();draw()};chips.appendChild(b)})}
+function draw(){var s=q.value.toLowerCase().trim(),out=D.filter(function(d){return(cur==="All"||d.t.indexOf(cur)>=0)&&(!s||JSON.stringify(d).toLowerCase().indexOf(s)>=0)});
+list.innerHTML=out.length?out.map(function(d){return '<details><summary><span>'+esc(d.n)+'</span><small>'+d.t.map(function(t){return '<span class="pill">'+esc(t)+'</span>'}).join(" ")+'</small></summary><div class="body"><div><h3>Presentation</h3>'+esc(d.f)+'</div><div><h3>Investigations</h3>'+esc(d.w)+'</div><div><h3>Management</h3>'+esc(d.m)+'</div><div class="flag"><b>Red flags:</b> '+esc(d.r)+'</div></div></details>'}).join(""):'<p class="empty">No match. Try a symptom, organism or a different filter.</p>'}
+q.oninput=draw;drawChips();draw();
+var C=["Triage: airway, breathing, circulation, vital signs, consciousness. Is there sepsis?","History: onset, exposures, travel, contacts, animals, food, sexual history, medications, vaccination","Immune status: HIV, diabetes, steroids, biologics, transplant, cancer, pregnancy","Examine fully: skin, mouth, nodes, chest, abdomen, spine, meningism, joints, catheters and lines","Investigate: CBC, CRP, creatinine, liver tests, cultures before antibiotics, targeted imaging","Isolate if airborne, droplet or contact risk; use appropriate PPE","Treat the source, give supportive care, and prescribe antibiotics only with a clear indication","Notify public health for reportable diseases (TB, typhoid, hepatitis, dengue, meningitis, cholera and others per local rules)","Counsel: adherence, warning signs, hand hygiene, vaccination, partner and contact screening","Arrange follow-up and review results; document the indication and stop date for any antibiotic"],ck=document.getElementById("ck"),bar=document.getElementById("bar");
+ck.innerHTML=C.map(function(c,i){return '<label><input type="checkbox" data-i="'+i+'"><span>'+esc(c)+'</span></label>'}).join("");
+ck.onchange=function(){var n=ck.querySelectorAll("input:checked").length;bar.style.width=(n/C.length*100)+"%"};
+var $=function(i){return document.getElementById(i)},v=function(i){var x=parseFloat($(i).value);return isNaN(x)?0:x},on=function(k){return $("c_"+k).checked};
+var SY=[["cough","Cough"],["cough2","Cough for over 2 weeks"],["sob","Breathlessness"],["haem","Coughing blood"],["sore","Sore throat"],["dys","Burning urine or frequency"],["loin","Loin or abdominal pain"],["diar","Diarrhoea"],["vom","Vomiting"],["head","Headache"],["neck","Neck stiffness or photophobia"],["alt","Confusion or drowsiness"],["rash","Non-blanching (purpuric) rash"],["rash2","Other rash"],["skin","Red, hot, swollen skin or abscess"],["jaun","Jaundice or dark urine"],["myal","Joint or muscle pain"],["rig","Chills or rigors"],["bleed","Bleeding (gums, nose, stool)"],["wt","Weight loss or night sweats"]],
+BG=[["endem","Mosquito bites or endemic area (dengue, malaria)"],["food","Contaminated food or water exposure"],["tbc","Known TB contact"],["dm","Diabetes"],["imm","HIV, steroids, chemotherapy, biologics or transplant"],["ckd","Kidney disease"],["liv","Liver disease"],["preg","Pregnant"],["mal","Malnutrition"],["asp","No spleen"],["pen","Penicillin allergy"]];
+function cbs(id,a){$(id).innerHTML=a.map(function(x){return '<label><input type="checkbox" id="c_'+x[0]+'">'+x[1]+'</label>'}).join("")}
+cbs("sy",SY);cbs("bg",BG);
+D.push({n:"Sore throat and pharyngitis",t:["Respiratory"],f:"Sore throat, fever, tender neck nodes, tonsillar exudate and no cough suggest streptococcal infection.",w:"Use a scoring tool (Centor or FeverPAIN). Rapid antigen test or culture if available.",m:"Most cases are viral: analgesia, fluids and rest. Give an antibiotic (for example penicillin V or amoxicillin) only for a high score or confirmed group A streptococcus.",r:"Drooling, trismus, muffled voice, stridor, unilateral swelling (abscess), unable to swallow fluids."});
+var RU={0:[["cough",2,"cough"],["sob",2,"breathlessness"],["fever",1,"fever"],["fastRR",2,"fast breathing"],["lowO2",2,"low oxygen"]],1:[["dys",4,"urinary symptoms"],["loin",1,"loin pain"],["fever",1,"fever"]],3:[["neck",4,"neck stiffness"],["head",1,"headache"],["alt",2,"confusion"],["rash",3,"purpuric rash"],["fever",1,"fever"]],4:[["fd3",3,"fever 3 or more days"],["loin",1,"abdominal pain"],["diar",1,"bowel upset"],["head",1,"headache"],["food",2,"food or water exposure"]],5:[["fever",2,"fever"],["myal",2,"body pain"],["head",1,"headache"],["rash2",1,"rash"],["endem",2,"mosquito exposure"],["bleed",1,"bleeding"]],6:[["fever",1,"fever"],["rig",3,"chills or rigors"],["endem",2,"endemic exposure"],["jaun",1,"jaundice"]],7:[["cough2",3,"cough over 2 weeks"],["wt",3,"weight loss or night sweats"],["tbc",2,"TB contact"],["haem",2,"haemoptysis"]],8:[["skin",5,"skin redness or swelling"],["fever",1,"fever"]],9:[["diar",4,"diarrhoea"],["vom",1,"vomiting"],["food",1,"food or water exposure"]],10:[["jaun",4,"jaundice"],["vom",1,"vomiting"],["loin",1,"abdominal pain"]],12:[["fever",1,"fever"],["cough",1,"cough"],["sore",1,"sore throat"],["myal",1,"body aches"]],13:[["sore",4,"sore throat"],["fever",1,"fever"]]};
+$("go").onclick=function(){
+var y=v("ay"),mm=v("am"),mo=y*12+mm,ag=mo/12,T=v("at"),fd=v("ad"),hr=v("ah"),rr=v("ar"),bp=v("ab"),o2=v("as"),h="",fl=[],nt=[];
+if($("ay").value===""||y>100||y<0||mm>11){$("res").innerHTML='<div class="flag">Enter age: years 0 to 100, months 0 to 11.</div>';return}
+var s={fever:T>=38||fd>0,fd3:fd>=3,lowO2:o2>0&&o2<94};
+SY.concat(BG).forEach(function(x){s[x[0]]=on(x[0])});
+var rrT=mo<2?60:mo<12?50:ag<5?40:ag<12?30:22,hrT=mo<12?160:ag<5?140:120,rrH=rr>0&&rr>=rrT,hrH=hr>hrT,o2L=o2>0&&o2<92,bpL=bp>0&&(ag>=18?bp<=100:ag>=10?bp<90:ag>=1?bp<70+2*Math.floor(ag):bp<70);
+s.fastRR=rrH;var n=rrH+hrH+bpL+s.alt+o2L;
+if(n>=2||bpL)fl.push("Possible sepsis or shock ("+n+" danger signs). Treat as an emergency: oxygen if needed, blood cultures and lactate, IV fluids, empirical IV antibiotics within the first hour, and urgent transfer or senior review.");
+if((s.neck&&s.fever)||s.rash)fl.push("Possible meningitis or meningococcal disease. Give empirical IV antibiotics immediately and arrange emergency transfer; do not delay treatment for imaging or lumbar puncture.");
+if(mo<3&&s.fever)fl.push("Fever in an infant under 3 months needs same-day hospital evaluation, including sepsis work-up.");
+if(s.fever&&(s.imm||s.asp))fl.push("Fever in an immunocompromised or asplenic patient: low threshold for admission and early empirical IV antibiotics.");
+if(o2L)fl.push("Oxygen saturation under 92%: give oxygen and assess for admission.");
+if(s.fever&&s.endem&&(s.bleed||s.vom||s.loin))fl.push("Possible dengue warning signs (bleeding, persistent vomiting, abdominal pain): check hematocrit and platelets and consider admission.");
+if(s.preg&&s.fever)fl.push("Fever in pregnancy: involve obstetric review; avoid doxycycline and NSAIDs.");
+var sc=[];for(var k in RU){var p=0,why=[];RU[k].forEach(function(z){if(s[z[0]]){p+=z[1];why.push(z[2])}});if(p>=4)sc.push([p,+k,why])}
+sc.sort(function(a,b){return b[0]-a[0]});sc=sc.slice(0,4);
+h+=fl.map(function(f){return '<div class="flag"><b>Urgent:</b> '+esc(f)+'</div>'}).join("");
+h+=sc.length?'<div class="box"><b>Possible diagnoses, most likely first.</b> This is pattern matching to support, not replace, clinical judgment.</div>'+sc.map(function(x){var d=D[x[1]];return '<details open><summary><span>'+esc(d.n)+'</span><small>matched: '+esc(x[2].join(", "))+'</small></summary><div class="body"><div><h3>Investigations</h3>'+esc(d.w)+'</div><div><h3>Treatment approach</h3>'+esc(d.m)+'</div><div class="flag"><b>Red flags:</b> '+esc(d.r)+'</div></div></details>'}).join(""):'<div class="note">No clear pattern from the entered features. Take a fuller history, examine the patient and consider non-infectious causes.</div>';
+if(s.pen)nt.push("Penicillin allergy: clarify the reaction. If severe (anaphylaxis, angioedema), avoid beta-lactams and use a guideline alternative.");
+if(s.preg)nt.push("Pregnancy: avoid doxycycline, NSAIDs and fluoroquinolones; confirm fetal safety of every drug.");
+if(s.ckd)nt.push("Kidney disease: avoid NSAIDs and adjust renally cleared drugs.");
+if(s.liv)nt.push("Liver disease: limit paracetamol (about 2 g/day in adults) and review hepatotoxic drugs.");
+if(s.dm)nt.push("Diabetes: check glucose, expect more severe infection, lower the threshold to admit.");
+if(s.mal)nt.push("Malnutrition: higher risk of severe infection and drug toxicity; treat early.");
+if(ag>=65)nt.push("Older adult: presentation may be atypical (confusion, falls); check kidney function before dosing.");
+if(nt.length)h+='<div class="note"><b>Adjust for this patient</b><ul>'+nt.map(function(t){return '<li>'+esc(t)+'</li>'}).join("")+'</ul></div>';
+h+='<div class="note">Age and weight were copied to the dose calculator below. Review local guidelines before prescribing.</div>';
+$("res").innerHTML=h;$("dy").value=y;$("dm").value=mm;$("dw").value=v("aw")||"";$("dpg").checked=s.preg};
+$("clr").onclick=function(){document.querySelectorAll("#assess input").forEach(function(i){if(i.type==="checkbox")i.checked=false;else i.value=""});$("am").value=0;$("res").innerHTML=""};
+var E="Not covered for neonates under 1 month: use a neonatal formulary or specialist advice.";
+function r(x){return x<20?Math.round(x*2)/2:Math.round(x/5)*5}
+var DR={
+para:{n:"Paracetamol (oral)",o:1,f:function(c){if(c.mo<1)return{err:E};var mg=c.ad&&c.w>=50?1000:Math.min((c.mo<3?10:15)*c.w,1000);if(c.sp)mg=Math.min(mg,750);return{mg:mg,fr:4,iv:"Every 6 hours as needed",dm:Math.min(4*mg,4000),note:"Maximum 4 doses in 24 hours. Use lower totals with liver disease, malnutrition, dehydration or chronic alcohol use. Infants of 1 to 2 months: specialist advice."}}},
+ibu:{n:"Ibuprofen (oral)",o:1,f:function(c){if(c.mo<3)return{err:"Not recommended under 3 months."};if(c.sp)return{err:"Avoid NSAIDs with kidney or liver impairment, frailty or pregnancy. Use paracetamol."};return{mg:c.ad?400:Math.min(10*c.w,400),fr:3,iv:"Every 8 hours with food",dm:c.ad?1200:Math.min(30*c.w,1200),note:"Avoid in dengue, dehydration, peptic ulcer or GI bleeding, NSAID-sensitive asthma, and heart or kidney disease."}}},
+amox:{n:"Amoxicillin (oral)",o:1,f:function(c){if(c.mo<1)return{err:E};var q3=c.ad||!c.hi,mg=c.ad?(c.hi?1000:500):c.hi?Math.min(45*c.w,2000):Math.min(15*c.w,500);return{mg:mg,fr:q3?3:2,iv:q3?"Every 8 hours":"Every 12 hours",dm:c.ad?3000:c.hi?Math.min(90*c.w,4000):3*mg,note:"Standard dose for mild infection; high dose for severe pneumonia or otitis media per guideline. Contraindicated in severe penicillin allergy. Adjust in kidney impairment. Duration depends on the indication."}}},
+azi:{n:"Azithromycin (oral)",o:1,f:function(c){if(c.mo<1)return{err:E};var mg,nx;if(c.ad){mg=c.hi?1000:500;nx=c.hi?"500":"250"}else{mg=Math.min(10*c.w,c.hi?1000:500);nx=r(Math.min((c.hi?10:5)*c.w,c.hi?1000:250))}return{mg:mg,fr:1,nt:1,iv:"First dose, then once daily",note:"Then "+nx+" mg once daily: days 2 to 5 for standard use, up to day 7 for the enteric fever option, guided by local susceptibility. Check QT risk and interacting drugs."}}},
+cef:{n:"Ceftriaxone (IV or IM)",f:function(c){if(c.mo<1)return{err:E};var f=c.hi?2:1;return{mg:c.ad?(c.hi?2000:1000):Math.min(50*c.w,2000),fr:f,iv:f==2?"Every 12 hours":"Once daily",dm:c.hi?4000:2000,note:"High dose is for meningitis or severe infection. Never mix or give with calcium-containing IV fluids. Caution with severe beta-lactam allergy. Adults may need 2 g daily by indication."}}},
+doxy:{n:"Doxycycline (oral)",o:1,f:function(c){if(c.ag<8)return{err:"Avoid under 8 years unless a specialist directs it (for example rickettsial disease or cholera)."};return{mg:c.ad?100:Math.min(2.2*c.w,100),fr:2,iv:"Every 12 hours",dm:200,note:"Avoid in pregnancy. Take upright with water; separate from antacids, iron and calcium."}}},
+zinc:{n:"Zinc, elemental (oral, childhood diarrhoea)",o:1,f:function(c){if(c.ag>=5)return{err:"This option is for children under 5 with diarrhoea."};return{mg:c.mo<6?10:20,fr:1,iv:"Once daily for 10 to 14 days",note:"Give together with oral rehydration solution."}}},
+arte:{n:"Artesunate (IV, severe malaria)",f:function(c){return{mg:(c.w<20&&!c.ad?3:2.4)*c.w,fr:0,nt:1,iv:"IV at 0, 12 and 24 hours, then once daily",note:"For severe malaria in hospital. Switch to a full oral antimalarial course after at least 24 hours once the patient can swallow. Follow specialist and national guidance."}}}};
+$("dd").innerHTML=Object.keys(DR).map(function(k){return '<option value="'+k+'">'+DR[k].n+'</option>'}).join("");
+$("dgo").onclick=function(){
+var y=v("dy"),m=v("dm"),mo=y*12+m,ag=mo/12,w=v("dw"),h;
+if($("dy").value===""||y>100||m>11||w>250){$("dres").innerHTML='<div class="flag">Enter age (years 0 to 100, months 0 to 11) and a weight up to 250 kg.</div>';return}
+var est=!w;if(est)w=mo<12?.5*mo+4:ag<=5?2*(Math.floor(ag)+4):ag<=12?3*Math.floor(ag)+7:ag<18?Math.min(3*Math.floor(ag)+7,70):70;
+var c={w:w,mo:mo,ag:ag,ad:w>=40||ag>=18,hi:$("dl").value==="h",sp:$("dsp").checked,pg:$("dpg").checked,k:crcl(ag,w)},d=DR[$("dd").value],o=adj($("dd").value,c),st=v("dst");
+if(o.err)h='<div class="flag">'+o.err+'</div>';else{var q=r(o.mg),ml=d.o&&st>0?" = "+Math.round(q/st*50)/10+" mL":"";h='<div class="box"><h3>'+d.n+'</h3><p><b>Dose: '+q+' mg'+ml+'</b><br>'+o.iv+(o.fr&&!o.nt?'<br>Total per day: '+r(q*o.fr)+' mg':'')+(o.dm?'<br>Daily maximum: '+r(o.dm)+' mg':'')+'</p><p>'+o.note+'</p></div>'}
+h+='<div class="note">'+(est?'Weight estimated at '+Math.round(w)+' kg from age; enter the actual weight whenever possible. ':'')+(!est&&ag>=18&&w<40?'Low body weight: consider weight-based dosing. ':'')+'Doses assume normal kidney and liver function unless kidney values or the liver box are entered. Check allergies, interactions and local guidelines, and verify with a pharmacist or second clinician before prescribing.</div>';
+$("dres").innerHTML=h};
+function crcl(ag,w){var k=v("dk"),sc=v("dsc");if(k>0)return k;return sc>0&&ag>=18?Math.round((140-ag)*w/(72*sc)*($("dsx").value==="f"?.85:1)):0}
+var PN={para:"Preferred analgesic and antipyretic in pregnancy at the lowest effective dose.",amox:"Considered safe in pregnancy.",azi:"Generally acceptable in pregnancy.",cef:"Acceptable in pregnancy.",arte:"Recommended for severe malaria in all trimesters."};
+function adj(key,c){var K=c.k,x="";
+if(c.pg&&key==="ibu")return{err:"Avoid NSAIDs in pregnancy, especially from 20 weeks. Use paracetamol."};
+if(c.pg&&key==="doxy")return{err:"Avoid doxycycline in pregnancy. Choose a pregnancy-safe alternative per guideline (for example amoxicillin or azithromycin, depending on the infection)."};
+if(c.sp&&key==="ibu")return{err:"Avoid NSAIDs with liver impairment or frailty. Use paracetamol."};
+if(K&&c.ad&&key==="ibu"&&K<30)return{err:"Avoid NSAIDs when CrCl is under 30 mL/min. Use paracetamol."};
+var o=DR[key].f(c);if(o.err)return o;
+if(K){x+=" Kidney function used: CrCl "+K+" mL/min.";
+if(!c.ad)x+=" For children, use paediatric eGFR and have a pharmacist or paediatric nephrologist adjust the dose; adult thresholds do not apply.";
+else{
+if(key==="para"&&K<10){o.fr=3;o.iv="Every 8 hours (CrCl under 10)";o.dm=3*o.mg}
+if(key==="amox"&&K<30){o.mg=Math.min(o.mg,500);o.fr=K<10?1:2;o.iv=K<10?"Once daily (CrCl under 10)":"Every 12 hours (CrCl 10 to 29)";o.dm=o.fr*o.mg;x+=" Seek advice if a higher dose is needed for severe infection."}
+if(key==="ibu")x+=" CrCl 30 to 59: use the lowest dose for the shortest time; stop if dehydrated or kidney function worsens.";
+if(key==="azi"&&K<10)x+=" Use caution at CrCl under 10.";
+if(key==="cef"){x+=" No renal adjustment unless severe kidney and liver impairment together (maximum 2 g daily).";if(K<10&&c.sp)o.dm=2000}
+if(key==="doxy"||key==="arte")x+=" No kidney dose adjustment needed."}}
+if(c.pg&&PN[key])x+=" Pregnancy: "+PN[key];
+o.note+=x;return o}
+var nw=new Date(),day=Math.floor(Date.UTC(nw.getFullYear(),nw.getMonth(),nw.getDate())/864e5),ds=nw.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+$("upd").textContent="Today is "+ds+". The pearl and quiz change every day.";
+var PL=["Take blood cultures before antibiotics in suspected sepsis, but never delay the first dose to get them.","Asymptomatic bacteriuria rarely needs antibiotics; exceptions are pregnancy and before urological procedures.","In dengue, a rising hematocrit with falling platelets around defervescence signals plasma leakage.","Ask about travel, animals, sexual history and vaccination in every fever.","Most patients labelled penicillin-allergic can tolerate penicillins after formal evaluation.","Hepatitis C is curable with direct-acting antivirals; screen at-risk adults.","Live vaccines are generally contraindicated in pregnancy and severe immunosuppression.","Fever with neck stiffness or a non-blanching rash: treat first, investigate second.","A positive Widal test does not confirm typhoid; blood culture is the diagnostic test.","Hand hygiene is still the most effective single measure against healthcare-associated infection."];
+$("pearl").textContent=PL[day%PL.length];
+var NW=[{h:"Bundibugyo Ebola outbreak, Democratic Republic of the Congo",t:"WHO reported 8,728 confirmed cases and 4,205 deaths as of 6 October, the largest Ebola outbreak recorded in the DRC. Take a travel and exposure history in febrile patients and isolate with full PPE if exposure is possible.",d:"8 Oct 2026",s:"WHO",u:"https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON619"},{h:"First imported Ebola case in Kenya",t:"Kenya confirmed an imported case on 6 October in a traveller from the DRC who later died. Twenty-eight contacts were identified and quarantined.",d:"7 Oct 2026",s:"ECDC",u:"https://www.ecdc.europa.eu/en/ebola-outbreak-democratic-republic-congo-and-uganda"},{h:"Pneumonia of undetermined cause, Russian Federation",t:"WHO is seeking verification of the death of a laboratory worker from severe pneumonia. Media suggested possible pneumonic plague; Russian authorities reported no recent plague case. The cause is not confirmed.",d:"10 Oct 2026",s:"WHO",u:"https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON620"},{h:"Cholera in Borno State, Nigeria",t:"68,152 suspected cases and 394 deaths reported since May, as of 7 October.",d:"8 Oct 2026",s:"NaTHNaC",u:"https://travelhealthpro.org.uk/outbreaks"},{h:"Dengue in Bangladesh",t:"94,151 cases and 294 deaths reported in 2026 as of 8 October; relevant to South Asia travel and regional surveillance.",d:"8 Oct 2026",s:"NaTHNaC",u:"https://travelhealthpro.org.uk/outbreaks"}];
+$("news").innerHTML=NW.map(function(z){return '<div class="box" style="margin-bottom:.6rem"><h3>'+esc(z.h)+'</h3><p style="margin:.3rem 0">'+esc(z.t)+'</p><small>'+esc(z.d)+', <a href="'+z.u+'" rel="noopener">'+esc(z.s)+'</a></small></div>'}).join("");
+var QB=[["Which test is the most reliable for diagnosing enteric fever?",["Widal test","Blood culture","Stool microscopy","Urinalysis"],1,"Blood culture confirms Salmonella Typhi and gives susceptibility; the Widal test is unreliable."],["Which drug is preferred for severe malaria?",["Oral chloroquine","IV artesunate","Oral primaquine","IV ceftriaxone"],1,"IV artesunate is the treatment of choice for severe malaria, followed by a full oral course."],["Which drug class should be avoided for fever in dengue?",["Paracetamol","NSAIDs such as ibuprofen","Oral rehydration","Tepid sponging"],1,"NSAIDs and aspirin raise the bleeding risk in dengue; use paracetamol."],["Anaphylaxis is which hypersensitivity type?",["Type I","Type II","Type III","Type IV"],0,"Type I is IgE-mediated and immediate."],["First-line treatment of anaphylaxis is:",["IV antihistamine","IM adrenaline","Oral steroid","Nebulised salbutamol"],1,"Intramuscular adrenaline is first; other drugs are adjuncts."],["Which test rapidly detects rifampicin resistance in TB?",["Sputum smear","Xpert MTB/RIF","Mantoux test","Chest X-ray"],1,"Xpert MTB/RIF detects M. tuberculosis and rifampicin resistance within hours."],["Fever, neck stiffness and a purpuric rash: the priority is:",["CT head first","Immediate empirical IV antibiotics","Wait for lumbar puncture","Oral antibiotics"],1,"Do not delay antibiotics for imaging or lumbar puncture in suspected meningococcal disease."],["Live vaccines are generally contraindicated in:",["Pregnancy","Diabetes","Asthma","Hypertension"],0,"Live vaccines are avoided in pregnancy and in severe immunosuppression."],["Which is a WHO AWaRe Reserve antibiotic?",["Amoxicillin","Ceftriaxone","Colistin","Doxycycline"],2,"Amoxicillin and doxycycline are Access, ceftriaxone is Watch, colistin is Reserve."],["Hepatitis C is cured with:",["Direct-acting antivirals","Interferon alone","Long-term steroids","Vaccination"],0,"Direct-acting antiviral courses cure most patients."],["Late-stage HIV mainly depletes which cells?",["CD4+ T cells","B cells","Neutrophils","NK cells"],0,"Loss of CD4+ T cells leads to opportunistic infections."],["Asymptomatic bacteriuria should be treated in:",["Nursing home residents","Diabetic patients","Pregnant women","Catheterised adults"],2,"Treat in pregnancy and before urological procedures; otherwise avoid."],["Which is a qSOFA criterion?",["Heart rate over 90","Respiratory rate 22 or more","Temperature over 38","WBC over 12"],1,"qSOFA: respiratory rate 22 or more, altered mentation, systolic BP 100 or less."],["Doxycycline should generally be avoided in:",["Pregnancy and children under 8","Adults over 65","Diabetes","Asthma"],0,"Tetracyclines affect developing teeth and bone."],["Complement deficiency predisposes to infection with:",["Neisseria","Pneumocystis","Aspergillus","CMV"],0,"Terminal complement deficiency causes recurrent Neisseria infections."]];
+(function(){var st=(day*5)%QB.length,qs=[],i=0,sc=0;for(var j=0;j<5;j++)qs.push(QB[(st+j)%QB.length]);$("qd").textContent="Quiz for "+ds+": five questions, a new set each day.";
+function show(){if(i>=5){$("qz").innerHTML='<h3>Score: '+sc+' of 5</h3><p>'+(sc>=4?"Excellent work.":sc>=3?"Good. Review the explanations.":"Revisit the topics above and try again tomorrow.")+'</p><button class="btn" id="qr">Retake today\'s quiz</button>';$("qr").onclick=function(){i=0;sc=0;show()};return}
+var x=qs[i];$("qz").innerHTML='<p><b>'+(i+1)+' of 5.</b> '+esc(x[0])+'</p>'+x[1].map(function(o,j){return '<button class="btn ghost qo" data-j="'+j+'">'+esc(o)+'</button>'}).join("")+'<div id="qf"></div>';
+document.querySelectorAll(".qo").forEach(function(b){b.onclick=function(){var ok=+b.dataset.j===x[2];if(ok)sc++;document.querySelectorAll(".qo").forEach(function(z){z.disabled=true;if(+z.dataset.j===x[2])z.style.borderColor="var(--acc)"});$("qf").innerHTML='<div class="'+(ok?"good":"flag")+'"><b>'+(ok?"Correct. ":"Not quite. ")+'</b>'+esc(x[3])+'</div><button class="btn" id="qn">'+(i<4?"Next question":"See score")+'</button>';$("qn").onclick=function(){i++;show()}}})}
+show()})();
+var PHN={med:'Medical admission',pre:'Before surgery',post:'After surgery'};
+var PH={med:['Eat little and often (about six small meals) if appetite is poor; do not wait for full recovery to feed.','Offer energy and protein at every meal: eggs, dal, yogurt, milk, chicken, fish, and oral nutritional supplements if intake is under about half of meals.','Keep fluids up, especially with fever, sweating, vomiting or diarrhoea, unless fluids are restricted.','Screen for malnutrition within 24 hours of admission (for example MUST or NRS-2002); weigh on admission and weekly.','Avoid long fasting for tests; schedule meals around procedures.'],
+pre:['Screen for malnutrition and anaemia early and correct deficits before elective surgery when time allows.','Severe malnutrition or weight loss over 10%: nutrition support for 7 to 14 days before major surgery is advised.','Stop alcohol and optimise glucose control in diabetes.','Fasting (most anaesthesia guidelines): solid food until 6 hours before and clear fluids until 2 hours before surgery. Follow the anaesthetist protocol and do not fast longer than needed.','A carbohydrate drink 2 to 3 hours before surgery may be used in non-diabetic patients under an enhanced recovery protocol. Diabetic patients follow anaesthetic and insulin instructions.','Ask which regular medicines to take, including diabetes tablets, insulin and anticoagulants.'],
+post:['Restart oral intake early, often within hours, if the patient is awake, can swallow and the surgeon agrees: sips, clear fluids, light diet, then normal diet as tolerated.','Aim for energy 25 to 30 kcal/kg/day and protein 1.2 to 1.5 g/kg/day (higher with wounds, burns or sepsis).','Give small frequent meals; add oral nutritional supplements if eating less than about 60% of needs.','If oral intake is inadequate for 5 to 7 days or is expected to be, start tube feeding if the gut works; use parenteral nutrition only if it cannot be used.','Prevent constipation with fluids, fibre as tolerated, walking and the lowest opioid dose possible.','Stoma, bowel resection, pancreatic, gastric and head and neck surgery need a dietitian-guided diet.']};
+var CD={gen:{n:'Fever or general infection',a:['Fever and infection raise energy and fluid needs; keep feeding rather than fasting.','Offer small frequent easily digested meals: khichdi, dalia, daal soup, yogurt, banana, boiled egg, soft chicken.','Aim for 2 to 3 litres of fluid a day in adults unless restricted: water, ORS, soups, milk, diluted juice.','Add oral nutritional supplements if intake is under half of usual.']},
+gast:{n:'Gastroenteritis, diarrhoea or cholera',a:['Oral rehydration solution is the core treatment: replace each loose stool or vomit. Severe dehydration needs IV fluids.','Resume feeding as soon as the patient can eat: rice, khichdi, banana, yogurt, boiled potato, soup. Starvation and BRAT-only diets are not needed.','Avoid sugary soft drinks, undiluted juice, very fatty or spicy food and alcohol. Continue breastfeeding in infants.','Zinc for children under 5 (see the dose calculator). Use boiled or treated water and wash hands.']},
+typh:{n:'Typhoid (enteric fever)',a:['Give a soft, easily digested, high-energy diet and plenty of fluids; fever and poor intake cause weight loss.','Continue soft normal food (khichdi, dalia, eggs, yogurt, soups) rather than liquids only. Avoid raw salads and unwashed fruit.','Suspected intestinal bleeding or perforation (severe abdominal pain, black stool, shock): nothing by mouth and call the surgeon.']},
+dengue:{n:'Dengue',a:['Drink oral fluids often: ORS, soups, lime water, coconut water, milk, fruit juice. Follow the triage-group fluid plan.','Give small soft meals and avoid NSAIDs and aspirin.','No food or supplement, including papaya leaf extract, has proven benefit for platelets. Persistent vomiting or poor intake needs admission and IV fluids.']},
+mal:{n:'Malaria',a:['Offer frequent small meals and fluids; fever raises needs.','Check blood glucose in severe malaria, children and pregnancy: hypoglycaemia is common, so give glucose if low.','Treat anaemia with iron-rich foods and recheck after recovery.']},
+tb:{n:'Tuberculosis',a:['Aim for high energy and protein (about 35 to 40 kcal/kg and 1.2 to 1.5 g/kg protein): eggs, milk, dal, meat, fish, nuts.','Screen for malnutrition and diabetes; weight gain suggests treatment response.','Avoid alcohol. Ask about vitamin B6 with isoniazid per programme. Take anti-TB drugs as the programme directs, with a light snack if nauseated.','Address food insecurity and refer to social support schemes.']},
+liver:{n:'Hepatitis or liver infection',a:['No alcohol. Avoid herbal and traditional remedies unless cleared by the doctor.','Give small frequent meals; energy is the priority. Do not restrict protein unless a specialist advises.','Hepatitis A or E: use safe water and well-cooked food; fat tolerance may be low early on.']},
+hiv:{n:'HIV infection',a:['Aim for adequate energy and protein; weight loss and malnutrition are common and raise risk.','Practise food safety: wash hands, cook meat and eggs fully, use safe water.','Manage diarrhoea with ORS and take antiretrovirals with or without food as instructed.']},
+resp:{n:'Pneumonia or respiratory infection',a:['Small frequent meals reduce breathlessness while eating; rest before meals.','Maintain fluids to thin secretions and include protein at each meal.','If breathing is fast or oxygen is needed, check swallow safety and aspiration risk before oral feeding.']},
+sepsis:{n:'Sepsis or critical illness',a:['Use a dietitian-led plan. Start enteral feeding early (within 24 to 48 hours) once resuscitated and stable; begin low and build up over 3 to 5 days.','Avoid overfeeding; aim for about 1.3 g/kg/day protein as tolerated. Use parenteral nutrition only if enteral feeding is not possible.','Monitor glucose, phosphate, potassium and magnesium and check refeeding risk.']},
+wound:{n:'Wound, surgical site or diabetic foot infection',a:['Increase protein to about 1.5 g/kg/day, keep energy adequate and maintain hydration.','Control blood glucose. Foods rich in vitamin C and zinc (citrus, guava, pulses, meat, seeds) help; supplement only if a deficiency is shown.','Stop smoking. Megadoses of vitamins have no proven benefit.']},
+imm:{n:'Immunocompromised or neutropenic patient',a:['Food safety is the key: cook meat, fish and eggs well; wash and peel fruit and vegetables; use pasteurised dairy and safe water.','Avoid raw eggs, street-vendor salads, unpasteurised milk and leftovers kept at room temperature.','Maintain energy and protein; mouth sores and nausea need soft bland foods and dietitian support.']},
+other:{n:'Non-infectious illness',a:['Give a standard hospital diet with enough energy and protein, then adjust using the conditions ticked above.']}};
+var CM={xdb:{l:'Diabetes',a:['Keep carbohydrate consistent across meals; prefer whole grains and pulses; avoid sugary drinks.','Common inpatient glucose target is about 7.8 to 10 mmol/L (140 to 180 mg/dL). Infection and steroids raise glucose.','Never fast or give a carbohydrate drink without an insulin plan; match meals to insulin timing.']},
+xkd:{l:'Kidney disease',a:['Individualise with the nephrologist and dietitian. Limit salt; restrict potassium and phosphate according to blood results (for example bananas, potatoes, tomatoes, dairy, nuts).','Do not under-feed an acutely ill patient; protein needs differ for dialysis, AKI and stable CKD.','Fluid restriction only if advised; avoid potassium-based salt substitutes and herbal remedies.']},
+xhf:{l:'Heart failure or hypertension',a:['Limit salt to about 5 g a day or less: avoid pickles, chips, processed foods and added salt.','Restrict fluids only if prescribed; weigh daily.','Avoid potassium salt substitutes if on ACE inhibitors, ARBs or spironolactone.']},
+xci:{l:'Cirrhosis',a:['Do not restrict protein (1.2 to 1.5 g/kg/day); energy about 35 kcal/kg/day.','Give breakfast and a late-evening snack to limit overnight fasting.','Limit sodium to about 2 g/day (5 g salt), no alcohol, avoid raw shellfish.']},
+xdy:{l:'Swallowing difficulty',a:['Arrange a speech and language assessment before oral feeding.','Use texture-modified food and thickened fluids as advised; sit fully upright for meals.','Consider nasogastric feeding if oral intake is unsafe or inadequate.']},
+xmn:{l:'Malnutrition or weight loss',a:['Give a high-energy high-protein diet with supplements between meals.','Refeeding risk: start at about 10 to 20 kcal/kg/day, give thiamine before feeding, check phosphate, potassium and magnesium, and increase over 4 to 7 days.']},
+xob:{l:'Obesity',a:['Do not restrict calories for weight loss during acute illness; keep protein adequate using ideal or adjusted weight.','The targets above use the weight entered; use an adjusted weight for obesity.']},
+xan:{l:'Anaemia',a:['Iron-rich foods (red meat, liver, lentils, spinach) with vitamin C; avoid tea with meals.','Check B12 and folate; iron tablets as prescribed.']},
+xpg:{l:'Pregnancy',a:['Extra energy and protein; folate, iron and calcium per antenatal advice.','Food safety: avoid unpasteurised dairy, raw eggs, undercooked meat and raw sprouts; no alcohol.']},
+xal:{l:'Food allergy or religious restriction',a:['Record allergies and religious or cultural food rules on admission (for example halal, vegetarian, fasting).','Confirm that supplements and tube feeds are allergen-safe.']}};
+$("cd").innerHTML=Object.keys(CD).map(function(k){return '<option value="'+k+'">'+CD[k].n+'</option>'}).join("");
+cbs("cm",Object.keys(CM).map(function(k){return [k,CM[k].l]}));
+function ul(a){return '<ul>'+a.map(function(t){return '<li>'+esc(t)+'</li>'}).join("")+'</ul>'}
+function bx(t,a){return '<div class="box"><h3>'+esc(t)+'</h3>'+ul(a)+'</div>'}
+$("dgo2").onclick=function(){var p=$("ph").value,c=CD[$("cd").value],w=v("dwt"),h="";
+if(w>0){var kl=w*25,kh=w*30,pl=w*1.2,pm=w*1.5,fl=w*30,pt=Math.round(pl)+" to "+Math.round(pm)+" g";if(on("xci")){kl=kh=w*35}if(on("xkd"))pt="individualise with the kidney team";
+h+=bx("Daily targets for "+w+" kg (adult, estimate)",["Energy: about "+Math.round(kl/10)*10+(kh>kl?" to "+Math.round(kh/10)*10:"")+" kcal","Protein: "+pt+" per day","Fluids: about "+Math.round(fl/100)*100+" mL per day"+(on("xhf")||on("xkd")?" (follow the prescribed limit)":" unless restricted")]);}
+h+=bx(PHN[p],PH[p])+bx(c.n,c.a);
+Object.keys(CM).forEach(function(k){if(on(k))h+=bx(CM[k].l,CM[k].a)});
+h+='<div class="flag"><b>Refer to a dietitian</b> for weight loss over 5% in a month, BMI under 18.5, intake under half of needs for 3 days, tube or parenteral feeding, swallowing problems, or complex kidney, liver or stoma diets. Watch for refeeding syndrome in anyone who has eaten very little for 5 days or more.</div><div class="note">General guidance only. It does not replace a dietitian or the treating team. If the patient is also having surgery for an infection, combine the stage and illness advice above.</div>';
+$("dtr").innerHTML=h};
+var MP={post:{n:'After surgery: high-protein soft diet',m:[['Breakfast','Scrambled egg, one small roti or toast, a glass of milk'],['Mid-morning','Yogurt with banana or stewed apple'],['Lunch','Daal or chicken soup with soft rice or khichdi, cooked vegetables'],['Afternoon','Oral nutritional supplement or milkshake'],['Dinner','Steamed fish or minced chicken with mashed potato or soft roti, cooked vegetables'],['Bedtime','Warm milk or custard']]},
+soft:{n:'Recovery from fever, typhoid or gastroenteritis: soft easy diet',m:[['Breakfast','Dalia (porridge) with milk, boiled egg'],['Mid-morning','ORS, unsweetened lassi or banana'],['Lunch','Khichdi with plain yogurt'],['Afternoon','Chicken or vegetable soup'],['Dinner','Boiled rice with mild daal, or soft chapati with mild minced chicken'],['Bedtime','Plain yogurt or milk']]},
+dm:{n:'Diabetes-friendly day',m:[['Breakfast','One small whole-wheat roti with egg or vegetable omelette, unsweetened tea'],['Mid-morning','One small guava or apple'],['Lunch','One to two rotis, daal, vegetables, salad, plain yogurt'],['Afternoon','Roasted chana or a few nuts'],['Dinner','Grilled fish or chicken, vegetables, one roti or a small portion of rice'],['Bedtime','A glass of milk if advised']],t:'Portions and insulin timing are set by the diabetes team.'},
+salt:{n:'Low-salt day (heart or blood pressure)',m:[['Breakfast','Dalia or oats cooked without salt, fruit'],['Mid-morning','Fresh fruit'],['Lunch','Unsalted daal, vegetables, roti, salad with lemon'],['Afternoon','Unsalted roasted chana or nuts'],['Dinner','Grilled chicken or fish, boiled vegetables, small portion of rice'],['Bedtime','Low-fat milk']],t:'Flavour with lemon, cumin, coriander and garlic. Avoid pickles, papad, chips, cheese, processed meat and stock cubes.'}};
+$("mpl").innerHTML=Object.keys(MP).map(function(k){return '<option value="'+k+'">'+MP[k].n+'</option>'}).join("");
+function mp(){var p=MP[$("mpl").value];$("mpr").innerHTML='<div class="tw"><table>'+p.m.map(function(r){return '<tr><th>'+r[0]+'</th><td>'+esc(r[1])+'</td></tr>'}).join("")+'</table></div><div class="note" style="margin-top:.6rem">'+(p.t?esc(p.t)+' ':'')+'Portions and restrictions must be set by the dietitian. Kidney, liver and tube-fed patients need individual plans.</div>'}
+$("mpl").onchange=mp;mp();
+var PD=[['Infants under 6 months',['Exclusive breastfeeding is ideal; continue during illness and after surgery once the child is awake and the team agrees.','If not breastfed, use age-appropriate infant formula made with safe water. No water, honey or herbal drinks.','Diarrhoea: ORS after each loose stool and zinc 10 mg daily for 10 to 14 days.']],['Children 6 to 23 months',['Continue breastfeeding with complementary foods: mashed khichdi, egg, daal, yogurt, minced chicken.','During illness give smaller, more frequent feeds; after recovery give one extra meal daily for about 2 weeks.','No honey before 1 year; avoid cow milk as the main drink before 12 months.']],['Children 2 to 12 years',['Offer small frequent meals with protein and extra fluids during fever. Avoid sugary drinks.','Diarrhoea: ORS 50 to 100 mL after each loose stool under 2 years, 100 to 200 mL at 2 to 10 years; zinc 20 mg daily for 10 to 14 days for ages 6 months to 5 years.','Continue usual food during diarrhoea.']],['Before and after surgery',['Fasting varies by protocol; commonly solids and formula 6 hours, breast milk 4 hours, clear fluids 1 to 2 hours before anaesthesia. Follow the anaesthetic team.','Restart feeds early after surgery: breastfeed or give clear fluids when awake, then normal food as tolerated.','Involve a paediatric dietitian for stoma, bowel surgery or poor weight gain.']],['Severe acute malnutrition',['Signs: weight-for-height below minus 3 SD, mid-upper arm circumference under 11.5 cm, or oedema.','Complicated cases are admitted: treat infection and low glucose, then F-75 followed by F-100 or ready-to-use therapeutic food per WHO guidance.','Uncomplicated cases can take ready-to-use therapeutic food at home with follow-up.']],['Safety',['Under 5 years: avoid whole nuts, grapes and hard foods (choking).','Record allergies (egg, milk, peanut, wheat) on admission.','Doses and fluid volumes are weight-based; use the dose calculator and a paediatric specialist.']]];
+$("ped").innerHTML=PD.map(function(x){return bx(x[0],x[1])}).join("");
+var PS={en:{h:'Diet advice sheet',s:{med:'During your hospital stay',pre:'Before your surgery',post:'After your surgery'},b:'Print',
+g:['Eat 5 to 6 small meals a day instead of 3 large meals.','Include protein at every meal: egg, daal, milk, yogurt, chicken, fish.','Drink plenty of safe fluids unless your doctor has told you to limit them.','Wash your hands before eating and eat freshly cooked food.','Tell the nurse if you have vomiting, diarrhoea, trouble swallowing or cannot eat.'],
+pre:['Follow the fasting time your doctor gives you. Usually no solid food for 6 hours and no clear fluids for 2 hours before surgery.','After that time, do not eat or drink anything unless told.','Ask your doctor which medicines to take on the morning of surgery.'],
+post:['Start with sips of water, then clear fluids, then light food, as the team allows.','Eat protein foods to help your wound heal.','Walk as advised and drink fluids to avoid constipation.','Do not skip meals. Ask for help if you feel sick.'],
+med:['Eat soft, easy food a little at a time.','Rest before and after meals.','Tell the team if you are losing weight.'],
+cm:{xdb:'Diabetes: avoid sugary drinks and sweets; eat at regular times.',xkd:'Kidney disease: follow the salt, potassium and fluid limits your doctor gave you.',xhf:'Heart or blood pressure: use less salt; avoid pickles and packet snacks.',xci:'Liver disease: no alcohol; have a snack at bedtime.',xdy:'Swallowing difficulty: eat only the food texture advised and sit upright.',xmn:'Low weight: take extra snacks and supplements between meals.'},
+il:{gast:'Diarrhoea: drink ORS after every loose stool and keep eating.',dengue:'Dengue: drink fluids often; do not take ibuprofen or aspirin.',typh:'Typhoid: eat soft food such as khichdi and avoid raw salad.',tb:'TB: eat extra protein and energy foods and avoid alcohol.',imm:'Weak immunity: eat only well-cooked food and drink safe water.'},
+f:'Date: ______ &nbsp; Special instructions: ______________ &nbsp; No food after: ______ &nbsp; No fluids after: ______',d:'General advice only. Follow your doctor and dietitian.'},
+ur:{h:'غذائی ہدایات',s:{med:'ہسپتال میں قیام کے دوران',pre:'آپریشن سے پہلے',post:'آپریشن کے بعد'},b:'پرنٹ کریں',
+g:['دن میں تین بڑے کھانوں کے بجائے پانچ سے چھ چھوٹے کھانے کھائیں۔','ہر کھانے میں پروٹین شامل کریں: انڈا، دال، دودھ، دہی، مرغی، مچھلی۔','جب تک ڈاکٹر نے منع نہ کیا ہو، صاف محفوظ پانی اور مائعات خوب پئیں۔','کھانے سے پہلے ہاتھ دھوئیں اور تازہ پکا ہوا کھانا کھائیں۔','قے، دست، نگلنے میں دشواری یا کھانا نہ کھا سکنے کی صورت میں نرس کو بتائیں۔'],
+pre:['ڈاکٹر کی بتائی ہوئی فاقے کی مدت پر عمل کریں۔ عموماً آپریشن سے 6 گھنٹے پہلے ٹھوس غذا اور 2 گھنٹے پہلے صاف مائعات بند کیے جاتے ہیں۔','اس وقت کے بعد ڈاکٹر کی اجازت کے بغیر کچھ نہ کھائیں نہ پئیں۔','ڈاکٹر سے پوچھیں کہ آپریشن کی صبح کون سی دوائیں لینی ہیں۔'],
+post:['ٹیم کی اجازت کے مطابق پہلے پانی کے گھونٹ، پھر صاف مائعات، پھر ہلکی غذا شروع کریں۔','زخم بھرنے کے لیے پروٹین والی غذا کھائیں۔','قبض سے بچنے کے لیے مشورے کے مطابق چلیں پھریں اور مائعات پئیں۔','کھانا نہ چھوڑیں۔ متلی ہو تو مدد مانگیں۔'],
+med:['نرم اور ہلکا کھانا تھوڑا تھوڑا کر کے کھائیں۔','کھانے سے پہلے اور بعد میں آرام کریں۔','وزن کم ہو رہا ہو تو ٹیم کو بتائیں۔'],
+cm:{xdb:'ذیابیطس: میٹھے مشروبات اور مٹھائی سے پرہیز کریں اور مقررہ وقت پر کھائیں۔',xkd:'گردے کا مرض: ڈاکٹر کی بتائی ہوئی نمک، پوٹاشیم اور پانی کی حد پر عمل کریں۔',xhf:'دل یا بلڈ پریشر: نمک کم استعمال کریں اور اچار اور پیکٹ والے سنیکس سے بچیں۔',xci:'جگر کا مرض: شراب بالکل نہیں؛ رات سونے سے پہلے ہلکا کھانا لیں۔',xdy:'نگلنے میں دشواری: صرف بتائی گئی ساخت کی غذا لیں اور سیدھے بیٹھ کر کھائیں۔',xmn:'وزن کی کمی: کھانوں کے درمیان اضافی سنیکس اور سپلیمنٹ لیں۔'},
+il:{gast:'دست: ہر پتلے پاخانے کے بعد او آر ایس پئیں اور کھانا جاری رکھیں۔',dengue:'ڈینگی: بار بار مائعات پئیں؛ آئبوپروفین یا اسپرین نہ لیں۔',typh:'ٹائیفائیڈ: کھچڑی جیسی نرم غذا کھائیں اور کچا سلاد نہ کھائیں۔',tb:'ٹی بی: پروٹین اور توانائی والی اضافی غذا لیں اور شراب نہ پئیں۔',imm:'کمزور مدافعت: صرف اچھی طرح پکا ہوا کھانا اور محفوظ پانی استعمال کریں۔'},
+f:'تاریخ: ______ &nbsp; خصوصی ہدایات: ____________ &nbsp; اس وقت کے بعد کھانا نہیں: ______ &nbsp; مائعات نہیں: ______',d:'یہ عمومی مشورہ ہے۔ اپنے ڈاکٹر اور غذائی ماہر کی ہدایات پر عمل کریں۔'}};
+$("dpr").onclick=function(){var L=$("psl").value,t=PS[L],p=$("ph").value,k=$("cd").value,it=t.g.concat(t[p]),s=$("sheet");
+Object.keys(t.cm).forEach(function(c){if(on(c))it.push(t.cm[c])});if(t.il[k])it.push(t.il[k]);
+s.hidden=false;s.lang=L;s.dir=L==="ur"?"rtl":"ltr";s.className="box"+(L==="ur"?" ur":"");
+s.innerHTML='<h2 style="font-size:1.5rem">'+t.h+'</h2><p><b>'+t.s[p]+'</b></p>'+ul(it)+'<p>'+t.f+'</p><p style="font-size:.85rem">'+t.d+'</p><button class="btn noprint" onclick="window.print()">'+t.b+'</button>';s.scrollIntoView()};
+var AW={en:{t:'Preventing infection: simple advice for everyone',i:['Wash your hands with soap and water for at least 20 seconds, especially before eating and after using the toilet.','Drink boiled or safe water, eat freshly cooked food, and wash fruit and vegetables well.','Get vaccinated and keep your childrens vaccines up to date.','Take antibiotics only when a doctor prescribes them and finish the course. Do not keep leftover medicine or share it.','For diarrhoea, drink oral rehydration solution (ORS) and keep eating. Go to hospital if there is blood in the stool, you cannot drink, or you are very sleepy.','Prevent mosquito bites: remove standing water and use nets and repellent. See a doctor for fever and do not take aspirin or ibuprofen unless the doctor advises.','A cough lasting more than 2 weeks, weight loss, night sweats or coughing blood: get tested for TB. TB is curable.','Go to hospital urgently for difficulty breathing, severe headache with a stiff neck, confusion, a rash that does not fade when pressed, fits, very high fever, or any fever in a baby under 3 months.'],d:'This is general information and does not replace a doctor. In an emergency go to the nearest hospital.'},
+ur:{t:'عوامی آگاہی: انفیکشن سے بچاؤ',i:['صابن اور پانی سے کم از کم 20 سیکنڈ تک ہاتھ دھوئیں، خاص طور پر کھانے سے پہلے اور بیت الخلا کے بعد۔','ابلا ہوا یا محفوظ پانی پئیں، تازہ پکا ہوا کھانا کھائیں اور پھل سبزیاں اچھی طرح دھو کر استعمال کریں۔','حفاظتی ٹیکے لگوائیں اور بچوں کے ٹیکوں کا کورس وقت پر مکمل کروائیں۔','اینٹی بائیوٹک صرف ڈاکٹر کے کہنے پر لیں اور کورس پورا کریں۔ بچی ہوئی دوا نہ رکھیں اور کسی اور کو نہ دیں۔','دست کی صورت میں او آر ایس پئیں اور کھانا جاری رکھیں۔ پاخانے میں خون ہو، پانی نہ پی سکیں یا شدید غنودگی ہو تو فوراً ہسپتال جائیں۔','مچھروں سے بچاؤ کے لیے کھڑا پانی ختم کریں، مچھر دانی اور مچھر بھگانے والی کریم استعمال کریں۔ بخار ہو تو ڈاکٹر کو دکھائیں اور ڈاکٹر کے مشورے کے بغیر اسپرین یا آئبوپروفین نہ لیں۔','دو ہفتے سے زیادہ کھانسی، وزن میں کمی، رات کو پسینہ یا خون والی کھانسی ہو تو ٹی بی کا ٹیسٹ کروائیں۔ ٹی بی قابلِ علاج ہے۔','سانس لینے میں دشواری، شدید سر درد کے ساتھ گردن اکڑنا، بے ہوشی یا الجھن، دبانے سے نہ مٹنے والے دھبے، دورے، بہت تیز بخار، یا تین ماہ سے کم عمر بچے کو بخار ہو تو فوراً ہسپتال جائیں۔'],d:'یہ عمومی معلومات ہیں اور ڈاکٹر کے مشورے کا متبادل نہیں۔ ہنگامی صورت میں قریبی ہسپتال پہنچیں۔'},
+hi:{t:'जन जागरूकता: संक्रमण से बचाव',i:['साबुन और पानी से कम से कम 20 सेकंड तक हाथ धोएँ, खासकर खाने से पहले और शौच के बाद।','उबला या सुरक्षित पानी पिएँ, ताज़ा पका खाना खाएँ और फल-सब्ज़ियाँ अच्छी तरह धोएँ।','टीके लगवाएँ और बच्चों का टीकाकरण समय पर पूरा कराएँ।','एंटीबायोटिक केवल डॉक्टर के कहने पर लें और कोर्स पूरा करें। बची हुई दवा न रखें और किसी और को न दें।','दस्त में ORS पिएँ और खाना जारी रखें। मल में खून हो, पानी न पी सकें या बहुत नींद आए तो तुरंत अस्पताल जाएँ।','मच्छरों से बचाव के लिए खड़ा पानी हटाएँ, मच्छरदानी और रिपेलेंट का उपयोग करें। बुखार हो तो डॉक्टर को दिखाएँ और डॉक्टर की सलाह के बिना एस्पिरिन या इबुप्रोफेन न लें।','दो हफ़्ते से ज़्यादा खांसी, वज़न घटना, रात में पसीना या खून वाली खांसी हो तो टीबी की जाँच कराएँ। टीबी का इलाज संभव है।','साँस लेने में कठिनाई, तेज़ सिरदर्द के साथ गर्दन अकड़ना, बेहोशी या भ्रम, दबाने पर न मिटने वाले चकत्ते, दौरे, बहुत तेज़ बुखार, या तीन महीने से छोटे शिशु को बुखार हो तो तुरंत अस्पताल जाएँ।'],d:'यह सामान्य जानकारी है, डॉक्टर की सलाह का विकल्प नहीं। आपात स्थिति में नज़दीकी अस्पताल जाएँ।'},
+ar:{t:'توعية عامة: الوقاية من العدوى',i:['اغسل يديك بالماء والصابون لمدة 20 ثانية على الأقل، خاصة قبل الأكل وبعد استخدام المرحاض.','اشرب ماءً مغلياً أو آمناً، وتناول طعاماً مطبوخاً طازجاً، واغسل الفواكه والخضروات جيداً.','حافظ على التطعيمات وأكمل تطعيمات أطفالك في مواعيدها.','لا تتناول المضادات الحيوية إلا بوصفة الطبيب وأكمل الجرعة كاملة، ولا تحتفظ ببقايا الدواء ولا تعطه لغيرك.','عند الإسهال اشرب محلول الإماهة الفموي واستمر في الأكل. اذهب إلى المستشفى فوراً إذا ظهر دم في البراز أو لم تستطع الشرب أو شعرت بنعاس شديد.','للوقاية من البعوض تخلص من المياه الراكدة واستخدم الناموسية وطارد الحشرات. إذا أصبت بحمى فراجع الطبيب ولا تتناول الأسبرين أو الإيبوبروفين دون استشارته.','إذا استمر السعال أكثر من أسبوعين أو ترافق مع نقص الوزن أو التعرق الليلي أو سعال دموي فاطلب فحص السل. السل قابل للشفاء.','اذهب إلى المستشفى فوراً عند صعوبة التنفس، أو صداع شديد مع تيبّس الرقبة، أو اضطراب الوعي، أو طفح لا يختفي بالضغط، أو تشنجات، أو حمى شديدة، أو حمى عند رضيع أقل من ثلاثة أشهر.'],d:'هذه معلومات عامة ولا تغني عن استشارة الطبيب. في الطوارئ توجه إلى أقرب مستشفى.'},
+bn:{t:'জনসচেতনতা: সংক্রমণ প্রতিরোধ',i:['সাবান ও পানি দিয়ে অন্তত ২০ সেকেন্ড হাত ধুয়ে নিন, বিশেষ করে খাওয়ার আগে ও টয়লেটের পরে।','ফোটানো বা নিরাপদ পানি পান করুন, তাজা রান্না করা খাবার খান এবং ফলমূল ও শাকসবজি ভালো করে ধুয়ে নিন।','টিকা নিন এবং শিশুদের টিকা সময়মতো সম্পূর্ণ করুন।','অ্যান্টিবায়োটিক শুধু ডাক্তারের পরামর্শে খান এবং কোর্স শেষ করুন। বাঁচা ওষুধ রেখে দেবেন না, অন্যকে দেবেন না।','ডায়রিয়া হলে ওআরএস খান এবং খাওয়া চালিয়ে যান। মলে রক্ত থাকলে, পানি খেতে না পারলে বা খুব ঘুম ঘুম ভাব হলে এখনই হাসপাতালে যান।','মশা থেকে বাঁচতে জমে থাকা পানি সরান, মশারি ও মশা তাড়ানোর ক্রিম ব্যবহার করুন। জ্বর হলে ডাক্তার দেখান এবং ডাক্তারের পরামর্শ ছাড়া অ্যাসপিরিন বা আইবুপ্রোফেন খাবেন না।','দুই সপ্তাহের বেশি কাশি, ওজন কমা, রাতে ঘাম বা কাশিতে রক্ত হলে যক্ষ্মার পরীক্ষা করান। যক্ষ্মা সারে।','শ্বাসকষ্ট, তীব্র মাথাব্যথার সঙ্গে ঘাড় শক্ত হওয়া, অজ্ঞান বা বিভ্রান্তি, চাপ দিলে না মেলানো ফুসকুড়ি, খিঁচুনি, খুব বেশি জ্বর, বা তিন মাসের কম বয়সী শিশুর জ্বর হলে এখনই হাসপাতালে যান।'],d:'এটি সাধারণ তথ্য, ডাক্তারের পরামর্শের বিকল্প নয়। জরুরি অবস্থায় নিকটস্থ হাসপাতালে যান।'}};
+(function(){var a=$("alg"),cl="en",LG=[["en","English"],["ur","اردو"],["hi","हिन्दी"],["ar","العربية"],["bn","বাংলা"]];
+function dr(){a.innerHTML="";LG.forEach(function(l){var b=document.createElement("button");b.className="chip";b.textContent=l[1];b.setAttribute("aria-pressed",l[0]===cl);b.onclick=function(){cl=l[0];dr()};a.appendChild(b)});
+var x=AW[cl],w=$("aw");w.lang=cl;w.dir=(cl==="ur"||cl==="ar")?"rtl":"ltr";w.className="box"+(cl==="ur"?" ur":"");w.innerHTML='<h3>'+x.t+'</h3>'+ul(x.i)+'<div class="note">'+x.d+'</div>'}dr()})();
+</script>
+</body>
+</html>
